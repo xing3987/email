@@ -36,7 +36,7 @@ public class Gmailimap {
         Session session = Session.getDefaultInstance(props, null);
 
         Store store = session.getStore("imaps");
-        store.connect("smtp.gmail.com", "*************@gmail.com","your_password");
+        store.connect("imap.gmail.com", "chenxing3987@gmail.com","password$1");
 //请将红色部分对应替换成你的邮箱帐号和密码
 //        URLName urln = new URLName("pop3", "pop.gmail.com", 993, null,
 //                "chenxing@ecquaria.com", "kuangyun398");
@@ -48,7 +48,7 @@ public class Gmailimap {
 
         Folder inbox = null;
         try {
-            store.connect();
+            //store.connect();
             inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_ONLY);
             FetchProfile profile = new FetchProfile();

@@ -375,7 +375,7 @@ public class NaEmailReader {
         String password = "wwmssadvifjjcaaj";
 
         Properties p = new Properties();
-        p.setProperty("mail.pop3.host", "smtp.qq.com"); // 按需要更改
+        p.setProperty("mail.pop3.host", "pop.qq.com"); // 按需要更改
         p.setProperty("mail.pop3.port", "995");
         // SSL安全连接参数
         p.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");

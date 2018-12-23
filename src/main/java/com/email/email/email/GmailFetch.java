@@ -25,13 +25,20 @@ public class GmailFetch {
         props.setProperty("mail.pop3.socketFactory.fallback", "false");
         props.setProperty("mail.pop3.port", "995");
         props.setProperty("mail.pop3.socketFactory.port", "995");
-
+        props.put("mail.pop3.auth", "true");
+        String username="chenxing3987@gmail.com";
+        String password="password$1";
 //以下步骤跟一般的JavaMail操作相同
         Session session = Session.getDefaultInstance(props, null);
-
+//        Session session = Session.getDefaultInstance(props, new Authenticator(){
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(username, password);
+//            }});
+//        Store store=session.getStore("pop3");
 //请将红色部分对应替换成你的邮箱帐号和密码
         URLName urln = new URLName("pop3", "pop.gmail.com", 995, null,
-                "chenxing@ecquaria.com", "kuangyun398");
+                username, password);
+//        //pop3://chenxing3987@gmail.com:password$1@pop.gamil.com:995
         Store store = session.getStore(urln);
         Folder inbox = null;
         try {
