@@ -31,7 +31,6 @@ public enum HostType {
         public Properties getProperties() {
             Properties defaults = new Properties();
             defaults.put("mail.pop3.host", "pop.exmail.qq.com");
-            defaults.put("mail.imap.host", "imap.exmail.qq.com");
             defaults.put("mail.store.protocol", "pop3"); // 默认使用pop3收取邮件
             defaults.setProperty("mail.pop3.host", "pop.qq.com"); // 按需要更改
             defaults.setProperty("mail.pop3.port", "995");

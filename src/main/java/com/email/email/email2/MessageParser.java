@@ -35,6 +35,7 @@ public class MessageParser {
             String plainContent = parser.getPlainContent(); // 获取纯文本邮件内容（注：有些邮件不支持html）
 
             System.out.println(subject);
+            System.out.println(htmlContent);
 
             List<DataSource> attachments = parser.getAttachmentList(); // 获取附件，并写入磁盘
             for (DataSource ds : attachments) {
