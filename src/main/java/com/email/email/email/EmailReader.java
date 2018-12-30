@@ -12,15 +12,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-public class NaEmailReader {
+public class EmailReader {
     private MimeMessage mimeMessage = null;
     private static String saveAttachPath = "D:\\"; // attach save path
     private StringBuffer bodyText = new StringBuffer(); // email body
     private String dateFormat = "yy-MM-dd HH:mm";
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    public NaEmailReader() { }
+    public EmailReader() { }
  
-    public NaEmailReader(MimeMessage mimeMessage) {
+    public EmailReader(MimeMessage mimeMessage) {
         this.mimeMessage = mimeMessage;
     }
  
@@ -393,10 +393,10 @@ public class NaEmailReader {
         folder.open(Folder.READ_ONLY);
         Message message[] = folder.getMessages();
         System.out.println("邮件数量:　" + message.length);
-        NaEmailReader re = null;
+        EmailReader re = null;
 
         for (int i = 0; i < message.length; i++) {
-            re = new  NaEmailReader((MimeMessage) message[i]);
+            re = new EmailReader((MimeMessage) message[i]);
             System.out.println("邮件　" + i + "　主题:　" + re.getSubject());
             System.out.println("邮件　" + i + "　发送时间:　" + re.getSentDate());
             System.out.println("邮件　" + i + "　是否需要回复:　" + re.getReplySign());

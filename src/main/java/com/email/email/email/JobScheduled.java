@@ -3,7 +3,6 @@ package com.email.email.email;
 import com.email.email.email2.AuthenticatorGenerator;
 import com.email.email.email2.HostType;
 import com.email.email.email2.SimpleMailReceiver;
-import org.hibernate.validator.internal.util.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,9 +48,9 @@ public class JobScheduled {
         //connect to email inbox
         Authenticator authenticator=AuthenticatorGenerator.getAuthenticator(username,password);
         Message message[] =SimpleMailReceiver.fetchInbox(HostType.TENCENT.getProperties(),authenticator);
-        NaEmailReader re = null;
+        EmailReader re = null;
         for (int i = 0; i < message.length; i++) {
-            re = new NaEmailReader((MimeMessage) message[i]);
+            re = new EmailReader((MimeMessage) message[i]);
             System.out.println("email　" + i + "　subject:　" + re.getSubject());
             System.out.println("email　" + i + "　send data:　" + re.getSentDate());
             System.out.println("email　" + i + "　need reply:　" + re.getReplySign());
