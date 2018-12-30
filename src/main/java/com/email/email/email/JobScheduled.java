@@ -1,5 +1,9 @@
 package com.email.email.email;
 
+import com.email.email.email2.AuthenticatorGenerator;
+import com.email.email.email2.HostType;
+import com.email.email.email2.SimpleMailReceiver;
+import org.hibernate.validator.internal.util.StringHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,41 +34,22 @@ public class JobScheduled {
 
     @Scheduled(cron = "${ird.getemail.cron}")
     public void getEmail() throws Exception {
-//        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-//        Class factoryClass = loader.loadClass("javax.net.SSLSocketFactory");
-//        System.out.println(factoryClass.getName());
-
-        String host = emailhost;
-        String username = emailusername;
-        String password = emailpassword;
-        String port = emailport;
+        //String host = emailhost;
+        //String username = emailusername;
+        //String password = emailpassword;
+        //String port = emailport;
         //String host = "pop.qq.com";
         //String username = "413619412@qq.com";
         //String password = "wwmssadvifjjcaaj";
         //String port="995";
-        System.out.println(host + username + password + port);
-        Properties p = new Properties();
-        p.setProperty("mail.pop3.host", host);
-        p.setProperty("mail.pop3.port", port);
-        // SSL
-        p.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        p.setProperty("mail.pop3.socketFactory.fallback", "true");
-        p.setProperty("mail.pop3.socketFactory.port", port);
+        String type="tencent";
+        String username = "413619412@qq.com";
+        String password = "wwmssadvifjjcaaj";
 
-        Session session = Session.getInstance(p);
-
-        URLName url = new URLName("pop3", host, 995, null, username, password);
-        //Store store = session.getStore("pop3");
-        //store.connect(host, username, password);
-        Store store = session.getStore(url);
-        store.connect();
-
-        Folder folder = store.getFolder("INBOX");
-        folder.open(Folder.READ_WRITE);
-        Message message[] = folder.getMessages();
-        System.out.println("email count:　" + message.length);
+        //connect to email inbox
+        Authenticator authenticator=AuthenticatorGenerator.getAuthenticator(username,password);
+        Message message[] =SimpleMailReceiver.fetchInbox(HostType.TENCENT.getProperties(),authenticator);
         NaEmailReader re = null;
-
         for (int i = 0; i < message.length; i++) {
             re = new NaEmailReader((MimeMessage) message[i]);
             System.out.println("email　" + i + "　subject:　" + re.getSubject());
@@ -88,7 +73,6 @@ public class JobScheduled {
             re.setAttachPath(SAVE_ATTACH_PATH);
             re.saveAttachMent((Part) message[i]);
         }
-        store.close();
     }
 
 
