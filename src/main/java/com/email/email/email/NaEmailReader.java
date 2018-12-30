@@ -371,8 +371,8 @@ public class NaEmailReader {
      */
     public static void main(String args[]) throws Exception {
         String host = "pop.qq.com";
-        String username = "413619412@qq.com";
-        String password = "wwmssadvifjjcaaj";
+        String username = "**@qq.com";
+        String password = "**";
 
         Properties p = new Properties();
         p.setProperty("mail.pop3.host", "pop.qq.com"); // 按需要更改

@@ -15,31 +15,28 @@ import javax.mail.internet.MimeUtility;
 public class GmailFetch {
 
     public static void main(String argv[]) throws Exception {
+        String username="***";
+        String password="**";
 
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
-// Get a Properties object
+        // Get a Properties object
         Properties props = System.getProperties();
         props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
         props.setProperty("mail.pop3.socketFactory.fallback", "false");
         props.setProperty("mail.pop3.port", "995");
         props.setProperty("mail.pop3.socketFactory.port", "995");
-        props.put("mail.pop3.auth", "true");
-        String username="chenxing3987@gmail.com";
-        String password="password$1";
-//以下步骤跟一般的JavaMail操作相同
+
+        // 以下步骤跟一般的JavaMail操作相同
         Session session = Session.getDefaultInstance(props, null);
-//        Session session = Session.getDefaultInstance(props, new Authenticator(){
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(username, password);
-//            }});
-//        Store store=session.getStore("pop3");
-//请将红色部分对应替换成你的邮箱帐号和密码
+
+        // 请将红色部分对应替换成你的邮箱帐号和密码
         URLName urln = new URLName("pop3", "pop.gmail.com", 995, null,
                 username, password);
-//        //pop3://chenxing3987@gmail.com:password$1@pop.gamil.com:995
         Store store = session.getStore(urln);
+
+
         Folder inbox = null;
         try {
             store.connect();

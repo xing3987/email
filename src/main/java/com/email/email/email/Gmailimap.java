@@ -15,40 +15,47 @@ public class Gmailimap {
 
 // Get a Properties object
         Properties props = System.getProperties();
+        props.setProperty("mail.store.protocol", "imaps");
 //        props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
 //        props.setProperty("mail.pop3.socketFactory.fallback", "false");
 //        props.setProperty("mail.pop3.port", "995");
 //        props.setProperty("mail.pop3.socketFactory.port", "995");
 
 
-        props.setProperty("mail.imap.host", "imap.gmail.com");
-        props.put("mail.store.protocol", "imap");
-        props.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.setProperty("mail.imap.socketFactory.fallback", "false");
+        props.setProperty("mail.imaps.host", "imap.gmail.com");
+        props.setProperty("mail.imaps.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.setProperty("mail.imaps.socketFactory.fallback", "false");
         //props.put("mail.imap.connectiontimeout", ConfigKeys.IMAP_CONNECTIONTIMEOUT);
 
 
-        props.setProperty("mail.imap.port", "993");
-        props.setProperty("mail.imap.socketFactory.port", "993");
+        props.setProperty("mail.imaps.port", "993");
+        props.setProperty("mail.imaps.socketFactory.port", "993");
 
 
 //以下步骤跟一般的JavaMail操作相同
         Session session = Session.getDefaultInstance(props, null);
 
-        Store store = session.getStore("imaps");
-        store.connect("imap.gmail.com", "chenxing3987@gmail.com","password$1");
+//        Store store = session.getStore("imaps");
+//        try {
+//            store.connect("imap.gmail.com", "chenxing3987@gmail.com", "password$1");
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
 //请将红色部分对应替换成你的邮箱帐号和密码
-//        URLName urln = new URLName("pop3", "pop.gmail.com", 993, null,
-//                "chenxing@ecquaria.com", "kuangyun398");
-//        System.out.println(urln);
-//        Store store = session.getStore(urln);
-//
+//        URLName urlName = new URLName("imap://chenxing3987@gmail.com:password$1@imap.gmail.com");
+//        Store store = session.getStore(urlName);
+        URLName urln = new URLName("imaps", "imap.gmail.com", 993, null,
+                "chenxing@ecquaria.com", "kuangyun398");
+        System.out.println(urln);
+        //Transport store =session.getTransport(urln);
+        Store store = session.getStore(urln);
+
 //        Session session = Session.getInstance(props,auth);
-//        session.setDebug(true);
+        session.setDebug(true);
 
         Folder inbox = null;
         try {
-            //store.connect();
+            store.connect();
             inbox = store.getFolder("INBOX");
             inbox.open(Folder.READ_ONLY);
             FetchProfile profile = new FetchProfile();

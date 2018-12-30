@@ -13,10 +13,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
-public class NaTaxJob {
+public class JobScheduled {
     private static final String EMAIL_SUBJECT_PREFIX = "ICSF-BIZREG2IRD-";
     private static String SAVE_ATTACH_PATH = "D:\\csvfiles\\getEmails\\"; // attach save path
-    private static Logger logger = LoggerFactory.getLogger(NaTaxJob.class);
+    private static Logger logger = LoggerFactory.getLogger(JobScheduled.class);
     @Value("${ird.email.toaddress")
     private String emailToAddress;
     @Value("${ird.email.host}")

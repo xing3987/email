@@ -45,13 +45,16 @@ public class POP3ReceiveMailTest {
         // 准备连接服务器的会话信息
         Properties props = new Properties();
         props.setProperty("mail.store.protocol", "pop3");        // 协议
-        props.setProperty("mail.pop3.port", "110");                // 端口
-        props.setProperty("mail.pop3.host", "pop3.163.com");    // pop3服务器
+        props.setProperty("mail.pop3.port", "995");                // 端口
+        props.setProperty("mail.pop3.host", "pop.gmail.com");    // pop3服务器
 
+        props.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.setProperty("mail.pop3.socketFactory.fallback", "false");
+        props.setProperty("mail.pop3.socketFactory.port", "995");
         // 创建Session实例对象
         Session session = Session.getInstance(props);
         Store store = session.getStore("pop3");
-        store.connect("xyang0917@163.com", "123456abc");
+        store.connect("chenxing3987@gmail.com", "password$1");
 
         // 获得收件箱
         Folder folder = store.getFolder("INBOX");
@@ -201,8 +204,6 @@ public class POP3ReceiveMailTest {
 
     /**
      * 判断邮件中是否包含附件
-     *
-     * @param msg 邮件内容
      * @return 邮件中存在附件返回true，不存在返回false
      * @throws MessagingException
      * @throws IOException

@@ -37,7 +37,7 @@ public class GmailSender {
         // -- Set the FROM and TO fields --
         msg.setFrom(new InternetAddress(username));
         msg.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("chenxing@gmail.com",false));
+                InternetAddress.parse("**",false));
         msg.setSubject("Hello");
         msg.setText("How are you");
         msg.setSentDate(new Date());
