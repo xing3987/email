@@ -20,15 +20,15 @@ public class JobScheduled {
     private static final String EMAIL_SUBJECT_PREFIX = "ICSF-BIZREG2IRD-";
     private static String SAVE_ATTACH_PATH = "D:\\csvfiles\\getEmails\\"; // attach save path
     private static Logger logger = LoggerFactory.getLogger(JobScheduled.class);
-    @Value("${ird.email.toaddress")
+    @Value("${email.toaddress")
     private String emailToAddress;
-    @Value("${ird.email.host}")
+    @Value("${email.host}")
     private String emailhost;
-    @Value("${ird.email.username}")
+    @Value("${email.username}")
     private String emailusername;
-    @Value("${ird.email.password}")
+    @Value("${email.password}")
     private String emailpassword;
-    @Value("${ird.email.port}")
+    @Value("${email.port}")
     private String emailport;
 
     @Scheduled(cron = "${ird.getemail.cron}")
