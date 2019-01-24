@@ -42,7 +42,7 @@ public class DeleteEmptyFile {
      */
     public static void main(String[] args) {
         DeleteEmptyFile m = new DeleteEmptyFile();
-        List<File> list = m.visitAll(new File("g:/迅雷下载"));
+        List<File> list = m.visitAll(new File("g:/download"));
         System.out.println(list.size());
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPath());

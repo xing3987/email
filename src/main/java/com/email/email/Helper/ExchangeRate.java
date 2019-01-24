@@ -95,8 +95,8 @@ public class ExchangeRate {
         try {
             result =net(url, params, "GET").toString().trim();
             //System.out.println(result);
-            String res="<li.*?>1 人民币 =(.*?)<a.*?>.*?</a>(.*?)&.*?<br>";
-            Pattern pattern = Pattern.compile(res);
+            String reg="<li.*?>1 人民币 =(.*?)<a.*?>.*?</a>(.*?)&.*?<br>";
+            Pattern pattern = Pattern.compile(reg);
             Matcher matcher = pattern.matcher(result);
             String code1="";
             String code2="";
