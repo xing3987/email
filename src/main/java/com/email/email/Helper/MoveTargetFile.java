@@ -101,8 +101,11 @@ public class MoveTargetFile {
                 }
                 //筛选需要的文件并移动
                 String filename=files[i].getName();
-                if(filename.endsWith(".mp4") || filename.endsWith(".mkv") || filename.endsWith(".wmv")){
-                    String endswith=filename.split("\\.")[1];
+                if(filename.endsWith(".mp4") || filename.endsWith(".mkv")
+                        || filename.endsWith(".wmv") || filename.endsWith(".avi")
+                        || filename.endsWith(".wmp")|| filename.endsWith(".rmvb")){
+                    String[] splits=filename.split("\\.");
+                    String endswith=splits[splits.length-1];
                     File moveFile = new File(moveDir.getPath() + File.separator + new Date().getTime()+"."+endswith);
                     // 目标文件夹下存在的话，删除
                     if (moveFile.exists()) {
@@ -230,6 +233,6 @@ public class MoveTargetFile {
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
         MoveTargetFile databean=new MoveTargetFile();
-        databean.GetTargetFileAndRename("G:\\mymovie","G:\\movie");
+        databean.GetTargetFileAndRename("G:\\1","G:\\2");
     }
 }
