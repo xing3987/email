@@ -15,6 +15,8 @@ public class DeleteEmptyFile {
                 if (dirs[i].isDirectory()) {
                     System.out.println("name:" + dirs[i].getPath());
                     list.add(dirs[i]);
+                }else{
+                    System.out.println("filename:"+dirs[i].getName());
                 }
                 visitAll(dirs[i]);
             }
@@ -33,6 +35,7 @@ public class DeleteEmptyFile {
             // 是目录且为空
             if (temp.isDirectory() && temp.listFiles().length <= 0) {
                 temp.delete();
+                System.out.println("delete file:"+temp.getName());
             }
         }
     }
@@ -42,7 +45,7 @@ public class DeleteEmptyFile {
      */
     public static void main(String[] args) {
         DeleteEmptyFile m = new DeleteEmptyFile();
-        List<File> list = m.visitAll(new File("g:/download"));
+        List<File> list = m.visitAll(new File("G:\\迅雷下载"));
         System.out.println(list.size());
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getPath());
