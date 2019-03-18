@@ -5,7 +5,7 @@ import java.util.Properties;
 /**
  * 服务器种类：提供了网易和腾讯的企业邮箱(这两种已经测试通过)，和谷歌（测试未通过） 后期有需要可以扩展
  *
- * @author athena
+ * @author
  */
 public enum HostType {
 

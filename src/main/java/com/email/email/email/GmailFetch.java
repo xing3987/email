@@ -10,7 +10,6 @@ import javax.mail.internet.MimeUtility;
 /**
  * 用于收取Gmail邮件
  *
- * @author Winter Lau
  */
 public class GmailFetch {
 

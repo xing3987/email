@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 邮件解析类
  *
- * @author athena
+ * @author
  *
  */
 public class MessageParser {

@@ -17,7 +17,7 @@ import java.util.*;
 
 @RestController
 public class JobScheduled {
-    private static final String EMAIL_SUBJECT_PREFIX = "ICSF-BIZREG2IRD-";
+    private static final String EMAIL_SUBJECT_PREFIX = "xxx-";
     private static String SAVE_ATTACH_PATH = "D:\\csvfiles\\getEmails\\"; // attach save path
     private static Logger logger = LoggerFactory.getLogger(JobScheduled.class);
     @Value("${email.toaddress")

@@ -247,6 +247,6 @@ public class MoveTargetFile {
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
         MoveTargetFile databean = new MoveTargetFile();
-        databean.GetTargetFileAndRename("G:\\1","G:\\2");
+        databean.GetTargetFileAndRename("H:\\xunlei","H:\\3_18");
     }
 }

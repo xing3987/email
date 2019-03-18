@@ -6,7 +6,7 @@ import javax.mail.PasswordAuthentication;
 /**
  * 该类用来生成Authenticator
  *
- * @author athena
+ * @author
  *
  */
 public final class AuthenticatorGenerator {
