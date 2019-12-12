@@ -1,4 +1,4 @@
-package com.email.email.email2;
+package com.email2;
 
 import java.util.Properties;
 

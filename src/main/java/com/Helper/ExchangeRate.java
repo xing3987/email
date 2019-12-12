@@ -1,4 +1,4 @@
-package com.email.email.Helper;
+package com.Helper;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

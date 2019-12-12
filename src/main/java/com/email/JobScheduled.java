@@ -1,8 +1,8 @@
-package com.email.email.email;
+package com.email;
 
-import com.email.email.email2.AuthenticatorGenerator;
-import com.email.email.email2.HostType;
-import com.email.email.email2.SimpleMailReceiver;
+import com.email2.AuthenticatorGenerator;
+import com.email2.HostType;
+import com.email2.SimpleMailReceiver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

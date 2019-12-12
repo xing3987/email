@@ -1,4 +1,4 @@
-package com.email.email.email;
+package com.email;
 
 
 import java.io.BufferedInputStream;

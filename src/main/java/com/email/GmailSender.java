@@ -1,4 +1,4 @@
-package com.email.email.email;
+package com.email;
 import java.security.Security;
 import java.util.Date;
 import java.util.Properties;

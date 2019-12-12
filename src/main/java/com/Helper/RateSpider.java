@@ -1,4 +1,4 @@
-package com.email.email.Helper;
+package com.Helper;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;

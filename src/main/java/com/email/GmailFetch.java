@@ -1,57 +1,40 @@
-package com.email.email.email;
+package com.email;
 
+import java.io.UnsupportedEncodingException;
+import java.security.*;
+import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeUtility;
-import java.io.UnsupportedEncodingException;
-import java.security.Security;
-import java.util.Properties;
 
-public class Gmailimap {
+/**
+ * 用于收取Gmail邮件
+ *
+ */
+public class GmailFetch {
+
     public static void main(String argv[]) throws Exception {
+        String username="***";
+        String password="**";
 
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 
-// Get a Properties object
+        // Get a Properties object
         Properties props = System.getProperties();
-        props.setProperty("mail.store.protocol", "imaps");
-//        props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
-//        props.setProperty("mail.pop3.socketFactory.fallback", "false");
-//        props.setProperty("mail.pop3.port", "995");
-//        props.setProperty("mail.pop3.socketFactory.port", "995");
+        props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
+        props.setProperty("mail.pop3.socketFactory.fallback", "false");
+        props.setProperty("mail.pop3.port", "995");
+        props.setProperty("mail.pop3.socketFactory.port", "995");
 
-
-        props.setProperty("mail.imaps.host", "imap.gmail.com");
-        props.setProperty("mail.imaps.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.setProperty("mail.imaps.socketFactory.fallback", "false");
-        //props.put("mail.imap.connectiontimeout", ConfigKeys.IMAP_CONNECTIONTIMEOUT);
-
-
-        props.setProperty("mail.imaps.port", "993");
-        props.setProperty("mail.imaps.socketFactory.port", "993");
-
-
-//以下步骤跟一般的JavaMail操作相同
+        // 以下步骤跟一般的JavaMail操作相同
         Session session = Session.getDefaultInstance(props, null);
 
-//        Store store = session.getStore("imaps");
-//        try {
-//            store.connect("imap.gmail.com", "chenxing3987@gmail.com", "password$1");
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//请将红色部分对应替换成你的邮箱帐号和密码
-//        URLName urlName = new URLName("imap://chenxing3987@gmail.com:password$1@imap.gmail.com");
-//        Store store = session.getStore(urlName);
-        URLName urln = new URLName("imaps", "imap.gmail.com", 993, null,
-                "chenxing@ecquaria.com", "kuangyun398");
-        System.out.println(urln);
-        //Transport store =session.getTransport(urln);
+        // 请将红色部分对应替换成你的邮箱帐号和密码
+        URLName urln = new URLName("pop3", "pop.gmail.com", 995, null,
+                username, password);
         Store store = session.getStore(urln);
 
-//        Session session = Session.getInstance(props,auth);
-        session.setDebug(true);
 
         Folder inbox = null;
         try {
@@ -97,4 +80,5 @@ public class Gmailimap {
             text = new String(text.getBytes("ISO8859_1"));
         return text;
     }
+
 }

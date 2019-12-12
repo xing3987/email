@@ -1,4 +1,4 @@
-package com.email.email.email2;
+package com.email2;
 
 public class testController {
     public static void main(String[] args) {
